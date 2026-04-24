@@ -1,49 +1,416 @@
 ---
+import { getCollection } from 'astro:content';
 import BaseHead from '../components/BaseHead.astro';
+import ContentCard from '../components/ContentCard.astro';
 import Footer from '../components/Footer.astro';
 import Header from '../components/Header.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
+
+const cursos = (await getCollection('cursos')).slice(0, 4);
+const tutoriales = (await getCollection('tutoriales')).slice(0, 4);
+const posts = (await getCollection('posts')).slice(0, 4);
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
 	<body>
 		<Header />
 		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This template
-				serves as a lightweight, minimally-styled starting point for anyone looking to build a personal
-				website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your
-				<code>astro.config.mjs</code> file. You can customize your setup with
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to
-				<a href="https://docs.astro.build/">read the docs</a>
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
+			<!-- Hero Section -->
+			<section class="hero" data-reveal>
+				<div class="hero-content">
+					<div class="pill-row">
+						<span class="pill">adrotech</span>
+						<span class="pill-sub">Knowledge Hub</span>
+					</div>
+					<h1>
+						<span class="line-1">Construye.</span>
+						<span class="line-2 gradient-text">Comparte.</span>
+						<span class="line-3">Escala.</span>
+					</h1>
+					<p class="hero-desc">
+						Recursos prácticos, tutoriales aplicados y reflexiones sobre arquitectura, 
+						producto e IA. Para devs que construyen con criterio.
+					</p>
+					<div class="hero-cta">
+						<a href="/cursos" class="btn btn-primary">Explorar Cursos</a>
+						<a href="/sobre-mi" class="btn btn-secondary">Sobre Mí</a>
+					</div>
+				</div>
+				<div class="hero-visual">
+					<div class="code-block">
+						<div class="code-header">
+							<span class="dot red"></span>
+							<span class="dot yellow"></span>
+							<span class="dot green"></span>
+							<span class="code-title">build.sh</span>
+						</div>
+						<pre><code><span class="keyword">#!/bin/bash</span>
+
+<span class="comment"># Build knowledge pipeline</span>
+<span class="function">compile</span> ideas → <span class="function">deploy</span> learning
+
+<span class="keyword">for</span> course <span class="keyword">in</span> $(find . -name "*.md"); <span class="keyword">do</span>
+  <span class="function">share</span> --open-source
+<span class="keyword">done</span>
+
+<span class="function">echo</span> <span class="string">"Impact: $(scale knowledge)"</span></code></pre>
+					</div>
+				</div>
+			</section>
+
+			<!-- Stats -->
+			<section class="stats" data-reveal>
+				<div class="stat">
+					<span class="stat-num gradient-text">50+</span>
+					<span class="stat-label">Recursos</span>
+				</div>
+				<div class="stat">
+					<span class="stat-num gradient-text">100%</span>
+					<span class="stat-label">Práctico</span>
+				</div>
+				<div class="stat">
+					<span class="stat-num gradient-text">∞</span>
+					<span class="stat-label">Actualizaciones</span>
+				</div>
+			</section>
+
+			<!-- Cursos -->
+			<section data-reveal>
+				<div class="section-header">
+					<div class="section-title">
+						<span class="section-icon">📚</span>
+						<h2>Cursos</h2>
+					</div>
+					<a href="/cursos" class="section-link">Ver todos →</a>
+				</div>
+				<div class="card-grid">
+					{cursos.map((item) => <ContentCard entry={item} basePath="/cursos" />)}
+				</div>
+			</section>
+
+			<!-- Tutoriales -->
+			<section data-reveal>
+				<div class="section-header">
+					<div class="section-title">
+						<span class="section-icon">⚡</span>
+						<h2>Tutoriales</h2>
+					</div>
+					<a href="/tutoriales" class="section-link">Ver todos →</a>
+				</div>
+				<div class="card-grid">
+					{tutoriales.map((item) => <ContentCard entry={item} basePath="/tutoriales" />)}
+				</div>
+			</section>
+
+			<!-- Posts -->
+			<section data-reveal>
+				<div class="section-header">
+					<div class="section-title">
+						<span class="section-icon">💭</span>
+						<h2>Posts</h2>
+					</div>
+					<a href="/posts" class="section-link">Ver todos →</a>
+				</div>
+				<div class="card-grid">
+					{posts.map((item) => <ContentCard entry={item} basePath="/posts" />)}
+				</div>
+			</section>
+
+			<!-- CTA -->
+			<section class="cta-section" data-reveal>
+				<div class="cta-content">
+					<h2>¿Listo para construir?</h2>
+					<p>Explora los recursos, implementa en tus proyectos y comparte el conocimiento.</p>
+					<a href="/sobre-mi" class="btn btn-primary">Conocer Más</a>
+				</div>
+			</section>
 		</main>
 		<Footer />
 	</body>
 </html>
+
+<style>
+	/* Hero */
+	.hero {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 3rem;
+		align-items: center;
+		padding: 3rem 0;
+		min-height: 70vh;
+	}
+
+	.hero-content {
+		max-width: 560px;
+	}
+
+	.pill-row {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		margin-bottom: 1.25rem;
+	}
+
+	.pill-sub {
+		font-size: 0.75rem;
+		color: var(--text-faint);
+		font-weight: 500;
+		letter-spacing: 0.04em;
+	}
+
+	h1 {
+		margin-bottom: 1.5rem;
+	}
+
+	.line-1, .line-2, .line-3 {
+		display: block;
+	}
+
+	.line-1 {
+		color: var(--text);
+	}
+
+	.line-3 {
+		color: var(--text-dim);
+	}
+
+	.hero-desc {
+		font-size: 1.125rem;
+		margin-bottom: 2rem;
+		max-width: 480px;
+	}
+
+	.hero-cta {
+		display: flex;
+		gap: 1rem;
+		flex-wrap: wrap;
+	}
+
+	/* Buttons */
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		justify-content: center;
+		padding: 0.875rem 1.75rem;
+		border-radius: 10px;
+		font-weight: 600;
+		font-size: 0.95rem;
+		text-decoration: none;
+		transition: all 0.25s ease;
+	}
+
+	.btn-primary {
+		background: var(--accent-gradient);
+		color: #000;
+	}
+
+	.btn-primary:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 8px 30px rgba(34, 211, 238, 0.3);
+	}
+
+	.btn-secondary {
+		background: var(--bg-card);
+		border: 1px solid var(--border);
+		color: var(--text);
+	}
+
+	.btn-secondary:hover {
+		border-color: var(--accent);
+		color: var(--accent);
+	}
+
+	/* Code Block */
+	.hero-visual {
+		display: flex;
+		justify-content: center;
+	}
+
+	.code-block {
+		width: 100%;
+		max-width: 480px;
+		background: var(--bg-code);
+		border: 1px solid var(--border);
+		border-radius: var(--radius);
+		overflow: hidden;
+		box-shadow: 
+			0 0 0 1px rgba(0,0,0,0.5),
+			0 20px 60px -20px rgba(0,0,0,0.5),
+			0 0 100px -50px rgba(34, 211, 238, 0.15);
+	}
+
+	.code-header {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.75rem 1rem;
+		background: var(--bg-elev);
+		border-bottom: 1px solid var(--border);
+	}
+
+	.dot {
+		width: 12px;
+		height: 12px;
+		border-radius: 50%;
+	}
+
+	.dot.red { background: #ff5f57; }
+	.dot.yellow { background: #febc2e; }
+	.dot.green { background: #28c840; }
+
+	.code-title {
+		margin-left: 0.5rem;
+		font-family: var(--font-mono);
+		font-size: 0.8rem;
+		color: var(--text-faint);
+	}
+
+	.code-block pre {
+		margin: 0;
+		border: none;
+		border-radius: 0;
+		padding: 1.25rem;
+	}
+
+	.code-block code {
+		background: none;
+		padding: 0;
+		color: var(--text-dim);
+		font-size: 0.85rem;
+	}
+
+	.keyword { color: #c792ea; }
+	.function { color: #82aaff; }
+	.string { color: #c3e88d; }
+	.comment { color: #546e7a; }
+
+	/* Stats */
+	.stats {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1.5rem;
+		padding: 2rem 0;
+		border-top: 1px solid var(--border);
+		border-bottom: 1px solid var(--border);
+		margin-bottom: 3rem;
+	}
+
+	.stat {
+		text-align: center;
+	}
+
+	.stat-num {
+		display: block;
+		font-size: 2.5rem;
+		font-weight: 700;
+		line-height: 1;
+		margin-bottom: 0.5rem;
+	}
+
+	.stat-label {
+		font-size: 0.9rem;
+		color: var(--text-faint);
+		font-weight: 500;
+	}
+
+	/* Section Headers */
+	.section-header {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		margin-bottom: 1.5rem;
+	}
+
+	.section-title {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+	}
+
+	.section-icon {
+		font-size: 1.5rem;
+	}
+
+	.section-link {
+		font-size: 0.9rem;
+		font-weight: 500;
+		color: var(--accent);
+	}
+
+	.section-link:hover {
+		color: var(--accent-2);
+	}
+
+	/* Card Grid */
+	.card-grid {
+		display: grid;
+		grid-template-columns: repeat(4, 1fr);
+		gap: 1.25rem;
+	}
+
+	/* CTA Section */
+	.cta-section {
+		text-align: center;
+		padding: 4rem 2rem;
+		background: linear-gradient(180deg, transparent, rgba(34, 211, 238, 0.05));
+		border-radius: var(--radius);
+		margin-top: 2rem;
+	}
+
+	.cta-content h2 {
+		margin-bottom: 0.75rem;
+	}
+
+	.cta-content p {
+		max-width: 480px;
+		margin: 0 auto 1.5rem;
+	}
+
+	/* Responsive */
+	@media (max-width: 1024px) {
+		.hero {
+			grid-template-columns: 1fr;
+			text-align: center;
+			padding: 2rem 0;
+		}
+
+		.hero-content {
+			max-width: 100%;
+		}
+
+		.hero-desc {
+			max-width: 100%;
+		}
+
+		.hero-cta {
+			justify-content: center;
+		}
+
+		.hero-visual {
+			display: none;
+		}
+
+		.card-grid {
+			grid-template-columns: repeat(2, 1fr);
+		}
+	}
+
+	@media (max-width: 640px) {
+		.card-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.stats {
+			grid-template-columns: 1fr;
+			gap: 1rem;
+		}
+
+		.stat-num {
+			font-size: 2rem;
+		}
+	}
+</style>

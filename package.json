@@ -1,5 +1,5 @@
 {
-  "name": "proto-parsec",
+  "name": "adrotech",
   "type": "module",
   "version": "0.0.1",
   "engines": {
@@ -7,7 +7,10 @@
   },
   "scripts": {
     "dev": "astro dev",
+    "lint": "astro check",
+    "test": "astro check",
     "build": "astro build",
+    "check": "astro check",
     "preview": "astro preview",
     "astro": "astro"
   },
@@ -17,5 +20,9 @@
     "@astrojs/sitemap": "^3.7.2",
     "astro": "^6.1.9",
     "sharp": "^0.34.3"
+  },
+  "devDependencies": {
+    "@astrojs/check": "^0.9.8",
+    "typescript": "^5.9.3"
   }
 }

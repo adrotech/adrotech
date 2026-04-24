@@ -1,0 +1,47 @@
+---
+import { getCollection } from 'astro:content';
+import BaseHead from '../../components/BaseHead.astro';
+import ContentCard from '../../components/ContentCard.astro';
+import Footer from '../../components/Footer.astro';
+import Header from '../../components/Header.astro';
+
+const items = (await getCollection('cursos')).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<html lang="es">
+	<head>
+		<BaseHead title="Cursos | adrotech" description="Cursos gratuitos para aprender con enfoque practico" />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<section class="surface intro" data-reveal>
+				<span class="pill">adrotech</span>
+				<h1>Cursos</h1>
+				<p>Rutas estructuradas para aprender y ejecutar, con foco en impacto real.</p>
+			</section>
+			<div class="list">
+				{items.map((item) => <ContentCard entry={item} basePath="/cursos" />)}
+			</div>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	.intro {
+		margin-bottom: 1rem;
+	}
+
+	.list {
+		display: grid;
+		grid-template-columns: repeat(2, minmax(0, 1fr));
+		gap: 1rem;
+	}
+
+	@media (max-width: 900px) {
+		.list {
+			grid-template-columns: 1fr;
+		}
+	}
+</style>

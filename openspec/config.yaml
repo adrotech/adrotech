@@ -1,0 +1,19 @@
+schema: spec-driven
+
+context: |
+  Project: adrotech
+  Project tag: adrotech
+  Stack: Astro + MDX + npm
+  Deployment: Vercel
+  Content model: markdown collections for cursos, tutoriales, posts
+  Priorities: accessibility, responsive UI, semantic HTML, SEO, maintainable design tokens
+
+rules:
+  proposal:
+    - Escribir en espanol.
+    - Incluir tag adrotech en titulo/resumen.
+    - Separar claramente alcance y no-alcance.
+  tasks:
+    - Escribir en espanol.
+    - Incluir tag adrotech en cada tarea.
+    - Definir evidencia de validacion con npm run lint/test/build/check.

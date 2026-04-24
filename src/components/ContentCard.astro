@@ -1,0 +1,86 @@
+---
+import type { CollectionEntry } from 'astro:content';
+
+type Entry = CollectionEntry<'cursos'> | CollectionEntry<'tutoriales'> | CollectionEntry<'posts'>;
+
+interface Props {
+	entry: Entry;
+	basePath: '/cursos' | '/tutoriales' | '/posts';
+}
+
+const { entry, basePath } = Astro.props as Props;
+const href = `${basePath}/${entry.id}/`;
+---
+
+<a class="surface card" href={href}>
+	<div class="card-top">
+		<span class="pill">{entry.data.category}</span>
+		<time datetime={entry.data.date.toISOString()}>{entry.data.date.toLocaleDateString('es-AR')}</time>
+	</div>
+	<h3>{entry.data.title}</h3>
+	<p>{entry.data.description}</p>
+	{
+		entry.data.tags.length > 0 && (
+			<ul class="tag-list">
+				{entry.data.tags.slice(0, 3).map((tag) => <li>{tag}</li>)}
+			</ul>
+		)
+	}
+</a>
+
+<style>
+	.card {
+		display: block;
+		text-decoration: none;
+		color: inherit;
+		transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+	}
+
+	.card:hover {
+		transform: translateY(-3px);
+		border-color: var(--border-strong);
+		box-shadow: 0 12px 35px rgba(0, 0, 0, 0.24);
+	}
+
+	.card-top {
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 0.6rem;
+		margin-bottom: 0.75rem;
+	}
+
+	time {
+		font-size: 0.8rem;
+		color: var(--text-faint);
+	}
+
+	h3 {
+		font-size: 1.05rem;
+		margin: 0 0 0.35rem;
+		color: var(--text);
+	}
+
+	p {
+		margin: 0;
+		font-size: 0.95rem;
+	}
+
+	.tag-list {
+		list-style: none;
+		display: flex;
+		gap: 0.45rem;
+		padding: 0;
+		margin: 0.8rem 0 0;
+		flex-wrap: wrap;
+	}
+
+	.tag-list li {
+		font-size: 0.75rem;
+		color: var(--text-dim);
+		padding: 0.18rem 0.4rem;
+		border-radius: 999px;
+		background: var(--bg-code);
+		border: 1px solid var(--border);
+	}
+</style>

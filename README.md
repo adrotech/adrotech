@@ -1,63 +1,61 @@
-# Astro Starter Kit: Blog
+# adrotech
 
-```sh
-npm create astro@latest -- --template blog
-```
+Sitio personal de Adrian Rojas para compartir cursos gratuitos, tutoriales aplicados y posts de reflexion sobre tecnologia, producto e IA.
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+## Stack
 
-Features:
+- Astro + MDX
+- npm
+- Despliegue en Vercel
 
-- ✅ Minimal styling (make it your own!)
-- ✅ 100/100 Lighthouse performance
-- ✅ SEO-friendly with canonical URLs and Open Graph data
-- ✅ Sitemap support
-- ✅ RSS Feed support
-- ✅ Markdown & MDX support
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
+## Estructura
 
 ```text
-├── public/
-├── src/
-│   ├── assets/
-│   ├── components/
-│   ├── content/
-│   ├── layouts/
-│   └── pages/
-├── astro.config.mjs
-├── README.md
-├── package.json
-└── tsconfig.json
+src/
+  content/
+    cursos/
+    tutoriales/
+    posts/
+  pages/
+    index.astro
+    cursos/
+    tutoriales/
+    posts/
+    sobre-mi.astro
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## Scripts
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+- `npm run dev` - entorno local
+- `npm run lint` - chequeos Astro
+- `npm run test` - chequeos Astro (placeholder)
+- `npm run build` - build de produccion
+- `npm run check` - chequeos Astro
 
-The `src/content/` directory contains "collections" of related Markdown and MDX documents. Use `getCollection()` to retrieve posts from `src/content/blog/`, and type-check your frontmatter using an optional schema. See [Astro's Content Collections docs](https://docs.astro.build/en/guides/content-collections/) to learn more.
+## Deploy en Vercel
 
-Any static assets, like images, can be placed in the `public/` directory.
+### Setup inicial
 
-## 🧞 Commands
+1. Crear repo en GitHub con nombre `adrotech`.
+2. Importar el repo en Vercel (`Add New -> Project -> Import Git Repository`).
+3. Framework preset: `Astro`.
+4. Build command: `npm run build`.
+5. Output directory: `dist`.
+6. Variable de entorno recomendada:
+   - `SITE_URL=https://<tu-dominio-o-subdominio>`
 
-All commands are run from the root of the project, from a terminal:
+### Checklist de publicacion
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+- [ ] `npm run lint`
+- [ ] `npm run test`
+- [ ] `npm run build`
+- [ ] `npm run check`
+- [ ] Revisar rutas clave (`/`, `/cursos`, `/tutoriales`, `/posts`, `/sobre-mi`)
+- [ ] Validar metadata y sitemap (`/sitemap-index.xml`, `/rss.xml`)
+- [ ] Confirmar dominio final en `SITE_URL`
 
-## 👀 Want to learn more?
+## Operacion OpenSpec/OpenCode
 
-Check out [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
-
-## Credit
-
-This theme is based off of the lovely [Bear Blog](https://github.com/HermanMartinus/bearblog/).
+- Board objetivo: `https://github.com/users/adrotech/projects/2`
+- Tag operativo obligatorio: `adrotech`
+- Config en `.opencode` ya adaptada a frontend.

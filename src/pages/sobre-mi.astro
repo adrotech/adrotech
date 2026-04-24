@@ -1,0 +1,487 @@
+---
+import BaseHead from '../components/BaseHead.astro';
+import Footer from '../components/Footer.astro';
+import Header from '../components/Header.astro';
+import { SITE_TITLE } from '../consts';
+
+const skills = {
+  'Frontend': ['React', 'Astro', 'Tailwind', 'Vite', 'JavaScript'],
+  'Backend': ['Java', 'Spring Boot', 'REST API'],
+  'Tools': ['Git', 'Scrum', 'Agile'],
+};
+
+const certs = [
+  { name: 'Bootcamp Desarrollador Web Full Stack Java', issuer: 'MindHub LA', year: '2022' },
+  { name: 'Técnico en Ciberseguridad', issuer: 'INCIBE', year: '2024' },
+  { name: 'Network Technician', issuer: 'Cisco Networking Academy', year: '2024' },
+  { name: 'Fortinet NSE 1 & NSE 2', issuer: 'Fortinet', year: '2024' },
+  { name: 'Introduction to Cybersecurity', issuer: 'Cisco Networking Academy', year: '2024' },
+];
+
+const stats = [
+  { num: '700+', label: 'Horas coding' },
+  { num: '5+', label: 'Certificaciones' },
+  { num: '18+', label: 'Años experiencia' },
+];
+---
+
+<!doctype html>
+<html lang="es">
+	<head>
+		<BaseHead title={`Sobre mí | ${SITE_TITLE}`} description="Perfil de Adrian Rojas - Desarrollador Full Stack React + Java Spring Boot" />
+	</head>
+	<body>
+		<Header />
+		<main>
+			<!-- Hero -->
+			<section class="hero-section">
+				<div class="hero-bg"></div>
+				<div class="hero-content" data-reveal>
+					<div class="hero-grid">
+						<div class="hero-text">
+							<span class="pill">
+								<span class="pill-dot"></span>
+								Disponible para oportunidades
+							</span>
+							<h1>
+								<span class="gradient-text">Desarrollador</span>
+								<br />
+								Full Stack
+							</h1>
+							<p class="hero-desc">
+								Construyo soluciones web robustas con <strong>React</strong>, <strong>Astro</strong>, <strong>Tailwind</strong> y backend con <strong>Java Spring Boot</strong>. 
+								Formado en entornos ágiles reales, siempre aprendiendo y creando proyectos con impacto.
+							</p>
+							<div class="hero-stats">
+								{stats.map((stat) => (
+									<div class="hero-stat">
+										<span class="hero-stat-num gradient-text">{stat.num}</span>
+										<span class="hero-stat-label">{stat.label}</span>
+									</div>
+								))}
+							</div>
+						</div>
+						<div class="hero-visual">
+							<div class="code-card">
+								<div class="code-header">
+									<div class="dots">
+										<span></span><span></span><span></span>
+									</div>
+									<span class="code-title">profile.java</span>
+								</div>
+								<pre><code><span class="k">public</span> <span class="k">class</span> <span class="t">Developer</span> <span class="k">extends</span> <span class="t">Human</span> <span class="k">implements</span> <span class="t">Creator</span> <span class="k">extends</span> <span class="t">Learner</span> &#123;
+    
+    <span class="c">// Frontend stack</span>
+    <span class="t">String</span>[] frontend = &#123;
+        <span class="s">"React"</span>, <span class="s">"Astro"</span>, 
+        <span class="s">"Tailwind"</span>, <span class="s">"Vite"</span>
+    &#125;;
+    
+    <span class="c">// Backend stack</span>
+    <span class="t">String</span>[] backend = &#123;
+        <span class="s">"Java"</span>, <span class="s">"Spring Boot"</span>
+    &#125;;
+    
+    <span class="c">// Estado actual</span>
+    <span class="t">boolean</span> hungryForWork = <span class="k">true</span>;
+    <span class="t">boolean</span> alwaysLearning = <span class="k">true</span>;
+&#125;</code></pre>
+							</div>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			<!-- Skills -->
+			<section class="skills-section" data-reveal>
+				<h2>Stack tecnológico</h2>
+				<div class="skills-grid">
+					{Object.entries(skills).map(([category, items]) => (
+						<div class="skill-card">
+							<h3>{category}</h3>
+							<ul>
+								{items.map((item) => <li><span class="skill-tag">{item}</span></li>)}
+							</ul>
+						</div>
+					))}
+				</div>
+			</section>
+
+			<!-- Certificaciones -->
+			<section class="certs-section" data-reveal>
+				<h2>Certificaciones</h2>
+				<div class="certs-list">
+					{certs.map((cert) => (
+						<div class="cert-item">
+							<div class="cert-icon">
+								<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+							</div>
+							<div class="cert-info">
+								<h3>{cert.name}</h3>
+								<p>{cert.issuer} · {cert.year}</p>
+							</div>
+						</div>
+					))}
+				</div>
+			</section>
+
+			<!-- CTA -->
+			<section class="cta-section" data-reveal>
+				<div class="cta-card">
+					<h2>¿Let's code together?</h2>
+					<p>Siempre abierto a новые oportunidades y proyectos interesantes.</p>
+					<div class="cta-buttons">
+						<a href="https://github.com/adrotech" target="_blank" class="btn btn-primary">
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.235 1.839 1.235 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+							GitHub
+						</a>
+						<a href="https://www.linkedin.com/in/rojasadriane/" target="_blank" class="btn btn-secondary">
+							<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+							LinkedIn
+						</a>
+					</div>
+				</div>
+			</section>
+		</main>
+		<Footer />
+	</body>
+</html>
+
+<style>
+	/* Hero Section */
+	.hero-section {
+		position: relative;
+		padding: 2rem 0 3rem;
+	}
+
+	.hero-bg {
+		position: absolute;
+		inset: 0;
+		background: 
+			radial-gradient(ellipse 100% 80% at 30% -20%, rgba(34, 211, 238, 0.15) 0%, transparent 50%),
+			radial-gradient(ellipse 60% 50% at 90% 30%, rgba(167, 139, 250, 0.1) 0%, transparent 40%);
+		pointer-events: none;
+		z-index: -1;
+	}
+
+	.hero-grid {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 3rem;
+		align-items: center;
+	}
+
+	.hero-text .pill {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.4rem 0.9rem;
+		border-radius: 999px;
+		background: var(--accent-soft);
+		border: 1px solid rgba(34, 211, 238, 0.25);
+		color: var(--accent);
+		font-size: 0.8rem;
+		font-weight: 600;
+		margin-bottom: 1.5rem;
+	}
+
+	.pill-dot {
+		width: 6px;
+		height: 6px;
+		border-radius: 50%;
+		background: #22d3ee;
+		animation: pulse 2s infinite;
+	}
+
+	@keyframes pulse {
+		0%, 100% { opacity: 1; }
+		50% { opacity: 0.4; }
+	}
+
+	.hero-text h1 {
+		font-size: clamp(2.5rem, 5vw, 4rem);
+		line-height: 1.1;
+		margin-bottom: 1.25rem;
+	}
+
+	.hero-desc {
+		font-size: 1.1rem;
+		line-height: 1.7;
+		margin-bottom: 2rem;
+		max-width: 480px;
+	}
+
+	.hero-desc strong {
+		color: var(--accent);
+	}
+
+	.hero-stats {
+		display: flex;
+		gap: 2.5rem;
+	}
+
+	.hero-stat-num {
+		display: block;
+		font-size: 1.75rem;
+		font-weight: 700;
+	}
+
+	.hero-stat-label {
+		font-size: 0.85rem;
+		color: var(--text-faint);
+	}
+
+	/* Code Card */
+	.code-card {
+		background: var(--bg-code);
+		border: 1px solid var(--border);
+		border-radius: var(--radius);
+		overflow: hidden;
+		box-shadow: 
+			0 0 0 1px rgba(0,0,0,0.5),
+			0 25px 60px -25px rgba(0,0,0,0.5),
+			0 0 80px -40px rgba(34, 211, 238, 0.2);
+	}
+
+	.code-header {
+		display: flex;
+		align-items: center;
+		gap: 0.75rem;
+		padding: 0.75rem 1rem;
+		background: var(--bg-elev);
+		border-bottom: 1px solid var(--border);
+	}
+
+	.dots {
+		display: flex;
+		gap: 0.4rem;
+	}
+
+	.dots span {
+		width: 10px;
+		height: 10px;
+		border-radius: 50%;
+	}
+
+	.dots span:nth-child(1) { background: #ff5f57; }
+	.dots span:nth-child(2) { background: #febc2e; }
+	.dots span:nth-child(3) { background: #28c840; }
+
+	.code-title {
+		font-family: var(--font-mono);
+		font-size: 0.8rem;
+		color: var(--text-faint);
+	}
+
+	.code-card pre {
+		margin: 0;
+		padding: 1.25rem;
+		border: none;
+		border-radius: 0;
+		background: transparent;
+	}
+
+	.code-card code {
+		font-size: 0.85rem;
+		line-height: 1.8;
+	}
+
+	.k { color: #c792ea; }
+	.t { color: #82aaff; }
+	.f { color: #82aaff; }
+	.s { color: #c3e88d; }
+	.c { color: #546e7a; }
+
+	/* Skills */
+	.skills-section {
+		margin-bottom: 3rem;
+	}
+
+	.skills-section h2 {
+		margin-bottom: 1.25rem;
+	}
+
+	.skills-grid {
+		display: grid;
+		grid-template-columns: repeat(3, 1fr);
+		gap: 1rem;
+	}
+
+	.skill-card {
+		background: var(--bg-card);
+		border: 1px solid var(--border);
+		border-radius: var(--radius-sm);
+		padding: 1.5rem;
+		transition: all 0.25s ease;
+	}
+
+	.skill-card:hover {
+		border-color: var(--border-strong);
+		transform: translateY(-2px);
+	}
+
+	.skill-card h3 {
+		font-size: 0.85rem;
+		color: var(--text-faint);
+		text-transform: uppercase;
+		letter-spacing: 0.05em;
+		margin-bottom: 1rem;
+	}
+
+	.skill-card ul {
+		list-style: none;
+		padding: 0;
+		margin: 0;
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+
+	.skill-tag {
+		font-size: 0.95rem;
+		color: var(--text);
+	}
+
+	/* Certificaciones */
+	.certs-section {
+		margin-bottom: 3rem;
+	}
+
+	.certs-section h2 {
+		margin-bottom: 1.25rem;
+	}
+
+	.certs-list {
+		display: grid;
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1rem;
+	}
+
+	.cert-item {
+		display: flex;
+		align-items: center;
+		gap: 1rem;
+		background: var(--bg-card);
+		border: 1px solid var(--border);
+		border-radius: var(--radius-sm);
+		padding: 1.25rem;
+		transition: all 0.25s ease;
+	}
+
+	.cert-item:hover {
+		border-color: var(--accent);
+	}
+
+	.cert-icon {
+		width: 48px;
+		height: 48px;
+		border-radius: 12px;
+		background: var(--accent-soft);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		color: var(--accent);
+		flex-shrink: 0;
+	}
+
+	.cert-info h3 {
+		font-size: 1rem;
+		margin: 0 0 0.25rem;
+	}
+
+	.cert-info p {
+		font-size: 0.85rem;
+		color: var(--text-faint);
+		margin: 0;
+	}
+
+	/* CTA */
+	.cta-section {
+		margin-bottom: 2rem;
+	}
+
+	.cta-card {
+		text-align: center;
+		padding: 3rem 2rem;
+		background: linear-gradient(180deg, rgba(34, 211, 238, 0.05), transparent);
+		border: 1px solid var(--border);
+		border-radius: var(--radius);
+	}
+
+	.cta-card h2 {
+		margin-bottom: 0.75rem;
+	}
+
+	.cta-card p {
+		margin-bottom: 1.75rem;
+	}
+
+	.cta-buttons {
+		display: flex;
+		justify-content: center;
+		gap: 1rem;
+	}
+
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.875rem 1.75rem;
+		border-radius: 10px;
+		font-weight: 600;
+		font-size: 0.95rem;
+		text-decoration: none;
+		transition: all 0.25s ease;
+	}
+
+	.btn-primary {
+		background: var(--accent-gradient);
+		color: #000;
+	}
+
+	.btn-primary:hover {
+		transform: translateY(-2px);
+		box-shadow: 0 8px 30px rgba(34, 211, 238, 0.3);
+	}
+
+	.btn-secondary {
+		background: var(--bg-card);
+		border: 1px solid var(--border);
+		color: var(--text);
+	}
+
+	.btn-secondary:hover {
+		border-color: var(--accent);
+		color: var(--accent);
+		transform: translateY(-2px);
+	}
+
+	/* Responsive */
+	@media (max-width: 900px) {
+		.hero-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.hero-visual {
+			display: none;
+		}
+
+		.skills-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.certs-list {
+			grid-template-columns: 1fr;
+		}
+	}
+
+	@media (max-width: 640px) {
+		.hero-stats {
+			gap: 1.5rem;
+		}
+
+		.cta-buttons {
+			flex-direction: column;
+		}
+	}
+</style>
