@@ -1,19 +1,35 @@
-schema: spec-driven
+# OpenSpec Configuration
+# Configuración genérica para proyectos que usan el workflow SDD
 
-context: |
-  Project: adrotech
-  Project tag: adrotech
-  Stack: Astro + MDX + npm
-  Deployment: Vercel
-  Content model: markdown collections for cursos, tutoriales, posts
-  Priorities: accessibility, responsive UI, semantic HTML, SEO, maintainable design tokens
+specs:
+  # Directorio donde viven las specs activas
+  path: openspec/specs
+  
+  # Nombre del archivo principal de spec (puede ser .md o .yaml)
+  entry: spec.md
 
-rules:
-  proposal:
-    - Escribir en espanol.
-    - Incluir tag adrotech en titulo/resumen.
-    - Separar claramente alcance y no-alcance.
-  tasks:
-    - Escribir en espanol.
-    - Incluir tag adrotech en cada tarea.
-    - Definir evidencia de validacion con npm run lint/test/build/check.
+changes:
+  # Directorio para cambios/proposals activos
+  path: openspec/changes
+  
+  # Directorio para cambios archivados
+  archive: openspec/changes/archive
+  
+  # Formato de naming: kebab-case por defecto
+  naming: kebab-case
+
+workflow:
+  # Estados posibles del workflow
+  states:
+    - proposed
+    - in_progress
+    - verification
+    - completed
+    - archived
+
+  # Tags disponibles para filtering
+  tags:
+    - feature
+    - bugfix
+    - refactor
+    - docs
